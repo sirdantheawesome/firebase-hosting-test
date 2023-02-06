@@ -1,1 +1,0 @@
-self.__FONT_LOADER_MANIFEST={pages:{},app:{'/Users/dan/development/firebase-hosting-test/node_modules/@next/font/google/target.css?{"arguments":[{"subsets":["latin"]}],"import":"Inter","path":"src/app/page.tsx","variableName":"inter"}':["static/media/2aaf0723e720e8b9.p.woff2"]}};

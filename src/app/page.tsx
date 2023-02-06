@@ -1,16 +1,23 @@
-import Image from 'next/image'
 import { Inter } from '@next/font/google'
-import styles from './page.module.css'
+import './page.scss'
+import { db } from '@/firebase/firebase'
+import { collection, documentId, getDoc, getDocs } from 'firebase/firestore'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+export default async function Home() {
+
+  let loading = true
+  let data = await getDocs(collection(db, 'Structure/page-layout/pages'))
+
+  console.log("data is: " + data.docs[0].data().pageStructure[0].containedArray[0].type)
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
+    <main className="main">
+      <div className="description">
         <p>
           Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
+          <code className="code">src/app/page.tsx</code>
         </p>
         <div>
           <a
@@ -19,69 +26,54 @@ export default function Home() {
             rel="noopener noreferrer"
           >
             By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
+            <h1>DANI</h1>
           </a>
         </div>
       </div>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
+      <div className="center">
+        <div className="thirteen">
+          <p>{data.docs[0].data().name}</p>
         </div>
       </div>
 
-      <div className={styles.grid}>
+      <div className="grid">
         <a
           href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
+          className="card"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <h2 className={inter.className}>
+          <h2 className="className">
             Docs <span>-&gt;</span>
           </h2>
-          <p className={inter.className}>
+          <p className="className">
             Find in-depth information about Next.js features and API.
           </p>
         </a>
 
         <a
           href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
+          className="card"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <h2 className={inter.className}>
+          <h2 className="className">
             Templates <span>-&gt;</span>
           </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
+          <p className="className">Explore the Next.js 13 playground.</p>
         </a>
 
         <a
           href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
+          className="card"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <h2 className={inter.className}>
+          <h2 className="className">
             Deploy <span>-&gt;</span>
           </h2>
-          <p className={inter.className}>
+          <p className="className">
             Instantly deploy your Next.js site to a shareable URL with Vercel.
           </p>
         </a>
