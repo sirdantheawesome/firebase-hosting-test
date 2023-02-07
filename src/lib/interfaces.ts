@@ -1,6 +1,6 @@
 interface Page{
   name: string,
-  ageStructure: any[],
+  pageStructure: any[],
   slug: string,
 }
 
