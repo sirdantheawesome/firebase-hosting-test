@@ -12,7 +12,7 @@ export default async function Home() {
   let loading = true
   let data = await getDocs(collection(db, 'Structure/page-layout/pages'))
 
-  console.log("data is: " + data.docs[0].data().pageStructure[0].containedArray[0].type)
+  // console.log("data is: " + data.docs[0].data().pageStructure[0].containedArray[0].type)
 
 
 
