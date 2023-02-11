@@ -3,7 +3,7 @@ import './page.scss'
 import { db } from '@/firebase/firebase'
 import { addDoc, collection, documentId, getDoc, getDocs } from 'firebase/firestore'
 import { Page } from '@/lib/interfaces'
-import AddPageButton from '@/components/addPageButton'
+import AddPageButton from '@/components/AddPageButton'
 
 const inter = Inter({ subsets: ['latin'] })
 
