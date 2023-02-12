@@ -7,25 +7,20 @@ import AddPageButton from '@/components/AddPageButton'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default async function Home() {
+const Home = async () => {
 
-  let loading = true
   let data = await getDocs(collection(db, 'Structure/page-layout/pages'))
-
-  // console.log("data is: " + data.docs[0].data().pageStructure[0].containedArray[0].type)
-
-
 
   return (
     <main className="main">
-
       <div className="center">
         <div className="thirteen">
           <p>{data.docs[0].data().name}</p>
         </div>
         <AddPageButton />
       </div>
-
     </main>
   )
 }
+
+export default Home
