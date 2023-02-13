@@ -1,8 +1,8 @@
 import { Inter } from '@next/font/google'
 import './page.scss'
+import '@/standard-styles/main.scss'
 import { db } from '@/firebase/firebase'
-import { addDoc, collection, documentId, getDoc, getDocs } from 'firebase/firestore'
-import { Page } from '@/lib/interfaces'
+import { collection, getDocs } from 'firebase/firestore'
 import AddPageButton from '@/components/AddPageButton'
 
 const inter = Inter({ subsets: ['latin'] })

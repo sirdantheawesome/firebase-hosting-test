@@ -1,0 +1,15 @@
+@import "@/standard-styles/standard-imports.scss";
+.box-container {
+  padding: 1.8rem;
+  .dev-mode & {
+    background: fade-out($color: grey, $amount: 1);
+    border: 4px fade-out($color: grey, $amount: 1) solid;
+    border-radius: 1rem;
+    transition: 0.2s;
+    &:hover {
+      padding: 2rem;
+      background: fade-out($color: grey, $amount: 0.9);
+      border: 4px fade-out($color: grey, $amount: 0.8) solid;
+    }
+  }
+}
