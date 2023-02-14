@@ -8,3 +8,15 @@ h5,
 h6 {
   font-weight: 200;
 }
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  gap: 0.5rem;
+  button {
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+}

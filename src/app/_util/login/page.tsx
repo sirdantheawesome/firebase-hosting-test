@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic'
 
-const login = dynamic(() => import('@/lib/auth'),
+const login = dynamic(() => import('@/lib/Auth'),
   {
     ssr: false
   });

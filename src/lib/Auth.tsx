@@ -1,40 +1,67 @@
+'use client'
 import '@/app/_util/login/login.scss'
-import firebase from 'firebase/compat/app';
-import * as firebaseui from 'firebaseui'
 import 'firebaseui/dist/firebaseui.css'
-import { auth } from '@/firebase/firebase';
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { firebase } from '@/firebase/firebase';
+import Image from 'next/image';
+
 
 const Auth = () => {
-  const uiConfig = {
-    callbacks: {
-      signInSuccessWithAuthResult: function (authResult: any, redirectUrl: string) {
-        console.log("authResult: " + authResult);
-        console.log("redirectUrl:" + redirectUrl)
-        return true;
-      },
-    },
-    signInFlow: 'popup',
-    signInSuccessUrl: '/_util/user-profile',
-    signInOptions: [
-      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-      firebase.auth.EmailAuthProvider.PROVIDER_ID
-    ],
-    // tosUrl: '<your-tos-url>',
-    // privacyPolicyUrl: '<your-privacy-policy-url>'
-  };
+  const provider = new GoogleAuthProvider();
+  const auth = getAuth(firebase);
+  auth.languageCode = 'it';
+  console.log(auth.currentUser)
 
-  function openSignIn() {
-    const ui = new firebaseui.auth.AuthUI(auth);
-    ui.start(
-      '#firebaseui-auth-container',
-      uiConfig,
-    );
+  async function openSignIn() {
+    console.log("logging in")
+    await signInWithPopup(auth, provider)
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        if (credential) {
+          const token = credential.accessToken;
+        }
+        // The signed-in user info.
+        const user = result.user;
+        console.log("user: " + user.email + ", token: " + token)
+        return { user }
+        // IdP data available using getAdditionalUserInfo(result)
+        // ...
+      }).catch((error: any) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        // const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        // return { errorCode, errorMessage, email, credential }
+        // ...
+      });
   }
   return (
     <div className='login-page'>
       <h1>login</h1>
-      <button onClick={openSignIn}>Sign in</button>
-      <div id='firebaseui-auth-container'></div>
+      <div className='button-container'>
+
+        <button onClick={() => {
+          openSignIn();
+        }}>Sign in with Google</button>
+        <button onClick={() => {
+          console.log(auth.currentUser)
+        }}>Log current user data</button>
+      </div>
+      {
+
+        <div className='user-info'>
+          <h1>Email: {auth.currentUser ? auth.currentUser.email : ''}</h1>
+          <h2>Name: {auth.currentUser ? auth.currentUser.displayName : ''}</h2>
+          {auth.currentUser?.photoURL ? <Image src={auth.currentUser.photoURL} alt='user profile picture' /> : ''}
+          <h3>Feel like something is missing here? Like the users data? Check these out:</h3>
+          <p><a href='https://stackoverflow.com/questions/64721014/why-is-my-firebase-authentication-display-name-not-getting-updated-properly-with#:~:text=1-,Answer,-Sorted%20by%3A'>https://stackoverflow.com/questions/64721014/why-is-my-firebase-authentication-display-name-not-getting-updated-properly-with#:~:text=1-,Answer,-Sorted%20by%3A</a></p>
+          <p><a href='https://firebase.google.com/docs/auth/web/start#set_an_authentication_state_observer_and_get_user_data'>https://firebase.google.com/docs/auth/web/start#set_an_authentication_state_observer_and_get_user_data</a></p>
+        </div>
+      }
     </div>
   );
 };
