@@ -67,6 +67,9 @@ html {
     flex-direction: column;
     justify-content: space-between;
     align-items: stretch;
+    .main-content {
+      flex: 1;
+    }
   }
 }
 

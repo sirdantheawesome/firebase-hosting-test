@@ -1,0 +1,46 @@
+@import "@/standard-styles/standard-imports.scss";
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  .header-middle {
+    flex: 1;
+  }
+  .header-last .profile-link {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.2rem;
+    margin: 0.5rem;
+    border: 2px rgba(105, 105, 105, 0) solid;
+    border-radius: 2rem;
+    transition: 0.2s;
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: none;
+      border-color: rgba(255, 255, 255, 0.178);
+      background: rgba(255, 255, 255, 0.034);
+    }
+    h4 {
+      margin-left: 0.5rem;
+      font-weight: 300;
+    }
+    .profile-img-wrapper {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0.25rem;
+      img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+}
