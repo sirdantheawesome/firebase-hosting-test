@@ -14,7 +14,6 @@ type Props = {
 
 const ContainerTypes: React.FC<Props> = (prop) => {
   const Container = containerTypes[prop.type];
-  console.log(prop)
   return (
     <Container>
       {

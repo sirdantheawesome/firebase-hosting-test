@@ -16,19 +16,28 @@ const AddPageButton = () => {
       console.error("Error adding document: ", e);
     }
   }
+
+  function addPerm() {
+
+  }
   return (
-    <button
-      className='web-button'
-      onClick={() => {
-        addPage({
-          name: "Tommy",
-          pageStructure: [],
-          slug: "/tommy",
-        })
-      }}
-    >
-      Add website
-    </button>
+    <>
+      <button
+        className='web-button'
+        onClick={() => {
+          addPage({
+            name: "Tommy",
+            pageStructure: [],
+            slug: "/tommy",
+          })
+        }}
+      >
+        Add website
+      </button>
+      <button>
+        Make user Admin
+      </button>
+    </>
   );
 };
 

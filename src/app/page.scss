@@ -1,0 +1,30 @@
+@import "@/standard-styles/standard-imports.scss";
+
+.main-content {
+  flex: 1;
+  font-family: "Quicksand", "IBM Plex Sans";
+  font-weight: 300;
+  font-size: 2rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 3rem;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-weight: 400;
+  }
+}
+
+.smol {
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

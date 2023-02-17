@@ -20,9 +20,6 @@ const Page = async (params: { params: { page: string }, searchParams: any }) => 
   );
   const page = await getDocs(q);
 
-  // console.log(page.size ? page.docs[0].data() : '')
-  // console.log(page.docs[0].data().pageStructure[0].containedArray[0])
-
   return (
     <div className='main-content dev-mode'>
       <h1>From local:</h1>

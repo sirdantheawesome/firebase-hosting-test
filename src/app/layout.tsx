@@ -1,4 +1,6 @@
+'use client'
 import Header from '@/components/system/header/Header'
+import { RecoilRoot } from 'recoil'
 import './globals.css'
 
 export default function RootLayout({
@@ -13,12 +15,15 @@ export default function RootLayout({
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>
-        <Header />
-        <div className='main-content'>
-          {children}
-        </div>
-      </body>
+      <RecoilRoot>
+
+        <body>
+          <Header />
+          <div className='main-content'>
+            {children}
+          </div>
+        </body>
+      </RecoilRoot>
     </html>
   )
 }

@@ -1,25 +1,18 @@
-import { Inter } from '@next/font/google'
 import './page.scss'
 import '@/standard-styles/main.scss'
-import { db } from '@/firebase/firebase'
-import { collection, getDocs } from 'firebase/firestore'
-import AddPageButton from '@/components/AddPageButton'
+import AddPageButton from '@/components/debug/DebugButtons'
 
-const inter = Inter({ subsets: ['latin'] })
 
 const Home = async () => {
 
-  let data = await getDocs(collection(db, 'Structure/page-layout/pages'))
-
   return (
-    <main className="main">
+    <>
       <div className="center">
-        <div className="thirteen">
-          <p>{data.docs[0].data().name}</p>
-        </div>
         <AddPageButton />
       </div>
-    </main>
+      <p>Look into using reacts context to make the currentUser data accessible whereever you are in the app</p>
+      <p>Currently you have to get the authentication change for each different page that uses it</p>
+    </>
   )
 }
 
